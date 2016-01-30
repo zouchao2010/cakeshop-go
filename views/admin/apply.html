@@ -1,21 +1,21 @@
-{% extends "layout/admin.html" %}
-{% block title %}申请管理{% endblock %}
-{% block content %}
+{{ extends "layout/admin.html" }}
+{{ block title }}申请管理{{ endblock }}
+{{ block content }}
 <div class="fr mr30 mb10">
         <a class="fs12 fwnm" href="/admin/applys">全部</a>&nbsp;&nbsp;|&nbsp;&nbsp;<form action="" style="display:inline" method="get"><input type="text" style="display:inline" class="input" name="keyword"><input type="submit" name="sub" class="but" value="按公司名或手机搜索"></form>
     </div>
 <hr>
   <h1>申请管理</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 
-{% if total > 0 -%}
+{{ if total > 0 -}}
 <table class="table">
           <thead>
             <tr>
@@ -27,7 +27,7 @@
           </thead>
           <tbody>
 
-{% for apply in applys -%}
+{{ for apply in applys -}}
 
 <tr>
 
@@ -41,16 +41,16 @@
 
 </tr>
 
-{%- endfor %}
+{{- endfor }}
 
 </table>
 
 {{ module.Paginate(total, pagesize, page) }}
 
-{%- else -%}
+{{- else -}}
 
 <p>暂无申请</p>
 
-{%- endif %}
+{{- endif }}
 
-{% endblock %}
+{{ endblock }}

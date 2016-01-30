@@ -1,8 +1,8 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}添加商品{% endblock %}
+{{ block title }}添加商品{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/shops" >返回商品管理</a></div>
 <hr>
 <h1>请先选择分类</h1>
@@ -12,18 +12,18 @@
         <label>请先选择分类</label>
         <select class="form-control" name="cid" id="cid">
         <option value=0>请选择分类</option>
-		{% for category in categorys -%}
+		{{ for category in categorys -}}
 
         <option value={{category.id}}>{{category.name}}</option>
 
-        {%- endfor %}
+        {{- endfor }}
 		</select>
         </div>
 </form>
 
-{% endblock %}
+{{ endblock }}
 
-{% block foot %}
+{{ block foot }}
 
 <script>
 
@@ -41,4 +41,4 @@
 
 </script>
 
-{% endblock %}
+{{ endblock }}

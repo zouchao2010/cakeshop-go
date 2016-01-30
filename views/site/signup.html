@@ -1,14 +1,14 @@
-{% extends "layout/site.html" %}
+{{ extends "layout/site.html" }}
 
-{% block title %}注册{% endblock %}
-{% block css %}signin{% endblock %}
-{% block js %}sign{% endblock %}
-{% block content %}
+{{ block title }}注册{{ endblock }}
+{{ block css }}signin{{ endblock }}
+{{ block js }}sign{{ endblock }}
+{{ block content }}
 <div class="blank2"></div>
 <div class="wapper"><img src="/style/css/nav_signin.jpg"></div>
 <div class="blank10"></div>
 <div class="wapper">
-    {% if oauth -%}
+    {{ if oauth -}}
 
     <p>
 
@@ -20,7 +20,7 @@
 
     </p>
 
-    {%-endif %}
+    {{-endif }}
 <div class="free_box">
     <div class="global_popwin clearfix">
     	<div class="blank20"></div>
@@ -31,14 +31,14 @@
         	{{xsrf()}}
     		<div class="login_form">
             	<div class="itemword">
-                    {%set messages=handler.get_flashed_messages() %}
-                    {%-if messages-%}
+                    {{set messages=handler.get_flashed_messages() }}
+                    {{-if messages-}}
                         <div>
-                            {% for type, msg in messages%}
+                            {{ for type, msg in messages}}
                                 {{msg}}
-                            {% endfor %}
+                            {{ endfor }}
                         </div>
-                    {%-endif-%}
+                    {{-endif-}}
                 </div>
     			<div class="item">
     				<span>手机号码：</span>
@@ -75,10 +75,10 @@
     </div>
 </div>
 
-{% endblock %}
+{{ endblock }}
 
 
 
-{% block foot %}
+{{ block foot }}
 
-{% endblock %}
+{{ endblock }}

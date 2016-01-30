@@ -1,19 +1,19 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}添加地区{% endblock %}
+{{ block title }}添加地区{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/areas" >返回地区管理</a></div>
 <hr>
 <h1>添加地区</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 <form action="" method="post">
 {{xsrf()}}
         <div class="form-group">
@@ -24,9 +24,9 @@
         <label>上级地区</label>
         <select class="form-control" name="pid" id="pid">
         <option value=0>一级</option>
-        {% for area in areas -%}
+        {{ for area in areas -}}
         <option value={{area.id}}>{{area.name}}</option>
-        {%- endfor %}
+        {{- endfor }}
         </select>
         </div>
         <div class="form-group">
@@ -35,4 +35,4 @@
 </form>
 
 
-{% endblock %}
+{{ endblock }}

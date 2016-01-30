@@ -1,12 +1,12 @@
-{% extends "layout/user.html" %}
-{% block css %}member{% endblock %}
-{% block content %}
+{{ extends "layout/user.html" }}
+{{ block css }}member{{ endblock }}
+{{ block content }}
 
 <div class="mypostion">我的咨询</div>
 <div class="clearfix">
-	{% if total > 0%}
+	{{ if total > 0}}
 	<table width="100%" class="m_table list" rules=rows >
-		{% for consult in consults -%}
+		{{ for consult in consults -}}
 		<tr>
 			<td width="2%"></td>
 			<td width="19%">
@@ -19,18 +19,18 @@
 			</td>
 			<td width="60%">
 				<p class="ico ask">问：{{ consult.content }} ({{ consult.posted|datetimeformat }})</p>
-				{% if consult.replyed > 0-%}<p class="ico ans">答：{{ consult.reply }} {{ consult.replyed|datetimeformat }}</p>{%-endif %}
+				{{ if consult.replyed > 0-}}<p class="ico ans">答：{{ consult.reply }} {{ consult.replyed|datetimeformat }}</p>{{-endif }}
 			</td>
 			<td width="19%">
 				<p class="ask">2013-08-04 11:49:09</p>
 				<p class="ans">2013-08-04 11:51:24</p>
 			</td>
 		</tr>
-		{%- endfor %}
+		{{- endfor }}
 	</table>
 	{{ module.Paginate(total, pagesize, page) }}
-	{% else %}
+	{{ else }}
 		<p>您还没有咨询过</p>
-	{% endif %}
+	{{ endif }}
 </div>
-{% endblock %}
+{{ endblock }}

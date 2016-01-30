@@ -1,19 +1,19 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}修改栏目{{page.name}}{% endblock %}
+{{ block title }}修改栏目{{page.name}}{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/pages">返回栏目页管理</a></div>
 <hr>
 <h1>修改栏目</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 
 
 <form action="" method="post">
@@ -32,11 +32,11 @@
 </div>
 </form>
 
-{% endblock %}
+{{ endblock }}
 
 
 
-{% block foot %}
+{{ block foot }}
 
 <script src="/style/xheditor/xheditor-1.2.1.min.js"></script>
 
@@ -48,4 +48,4 @@
 
 </script>
 
-{% endblock %}
+{{ endblock }}

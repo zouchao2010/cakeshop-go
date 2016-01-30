@@ -1,19 +1,19 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}添加{{category.name}}属性{% endblock %}
+{{ block title }}添加{{category.name}}属性{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/categoryattrs/{{category.id}}">返回 {{category.name}} 管理</a></div>
 <hr>
 <h1>修改 {{category.name}} 的属性</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 
 <form action="" method="post">
 	{{xsrf()}}
@@ -34,4 +34,4 @@
     </div>
 </form>
 
-{% endblock %}
+{{ endblock }}

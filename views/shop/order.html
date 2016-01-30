@@ -1,11 +1,11 @@
-{% extends "layout/site.html" %}
+{{ extends "layout/site.html" }}
 
-{% block title %}我的购物车{% endblock %}
-{% block css %}shopping{% endblock %}
-{% block js %}shop{% endblock %}
-{% block content %}
+{{ block title }}我的购物车{{ endblock }}
+{{ block css }}shopping{{ endblock }}
+{{ block js }}shop{{ endblock }}
+{{ block content }}
 <div class="blank20"></div>
-{% if orderitems %}
+{{ if orderitems }}
 <div class="wapper">
 	<div class="shoppingprocess pro1"></div>
 </div>
@@ -21,21 +21,21 @@
             <td width="10%">小计</td>
             <td width="10%">操作</td>
         </tr>
-        {% for orderitem in orderitems %}
+        {{ for orderitem in orderitems }}
         <tr>
             <td width="2%" height="90px;"></td>
             <td>
                 <a class="fl"><img src="/upload/{{orderitem.shop.cover}}"></a>
                 <p class="fl ml10 fs12">
                     <a class="fs14">{{orderitem.shop.name}}</a><br>
-                    {%if orderitem.shopattr -%}规格：{{orderitem.shopattr.name}}{%-endif%} 免费配送10套餐具
+                    {{if orderitem.shopattr -}}规格：{{orderitem.shopattr.name}}{{-endif}} 免费配送10套餐具
                 </p>
             </td>
-            {%if orderitem.shopattr%}
-            {%set price = orderitem.shopattr.price%}
-            {%else%}
-            {%set price = orderitem.shop.price%}
-            {%endif%}
+            {{if orderitem.shopattr}}
+            {{set price = orderitem.shopattr.price}}
+            {{else}}
+            {{set price = orderitem.shop.price}}
+            {{endif}}
             <td class="oc">
                 ￥{{price}} 
             </td>
@@ -53,7 +53,7 @@
                 <a class="oc fs14 orderitemdel" style="cursor:pointer" data-id="{{orderitem.id}}">删除</a>
             </td>
         </tr>
-        {% endfor %}
+        {{ endfor }}
     </table>
 	<div class="mt10 fs14 clearfix">
         <div class="fr">商品件数<font class="oc">{{orderitems|length}}</font>件 待付商品金额(不含运费)<font class="oc" id="totalprice">￥0元</font></div>
@@ -69,7 +69,7 @@
     <div class="titico dapei wapper"></div>
     <div class="wapper">
         <ul class="dapeishopping">
-        	{% for shop in ashops-%}
+        	{{ for shop in ashops-}}
             <li>
                <div class="up">
                    <a><img src="/upload/{{shop.cover}}" /></a>
@@ -80,14 +80,14 @@
                </div>
                <div class="down">{{shop.resume}}</div>
             </li>
-			{%-endfor%}
+			{{-endfor}}
         </ul>
     </div>
 </div>
-{% else %}
+{{ else }}
 
 <div class="wapper">购物车里是空</div>
-{% endif %}
+{{ endif }}
 <script>
 Do(function(){
 	function settotalprice(){
@@ -124,7 +124,7 @@ Do(function(){
 	})
 })  
 </script>
-{% endblock %}
+{{ endblock }}
 
-{% block foot %}
-{% endblock %}
+{{ block foot }}
+{{ endblock }}

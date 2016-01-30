@@ -1,21 +1,21 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}商品{{shop.name}}规格和价格管理{% endblock %}
+{{ block title }}商品{{shop.name}}规格和价格管理{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/shops">返回商品管理</a> <a href="/admin/addshopattr/{{shop.id}}" class="but">添加规格和价格</a></div>
 <hr>
 <h1>商品{{shop.name}}规格和价格管理</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 
-{% if shopattrs -%}
+{{ if shopattrs -}}
   <table class="table">
           <thead>
             <tr>
@@ -27,7 +27,7 @@
             </tr>
           </thead>
           <tbody>
-          {% for shopattr in shopattrs -%}
+          {{ for shopattr in shopattrs -}}
 
             <tr>
               <td>{{shopattr.id}}</td>
@@ -36,13 +36,13 @@
               <td>{{shopattr.order}}</td>
               <td><a href="/admin/editshopattr/{{shopattr.id}} ">修改</a> / <a href="/admin/delshopattr/{{shopattr.id}} ">删除</a></td>
             </tr>
-		{%- endfor %}
+		{{- endfor }}
           </tbody>
         </table>
         {{pagehtml}}
-{%- else -%}
+{{- else -}}
 
 <p>暂无规格和价格</p>
 
-{%- endif %}
-{% endblock %}
+{{- endif }}
+{{ endblock }}

@@ -1,15 +1,15 @@
-{% extends "layout/site.html" %}
+{{ extends "layout/site.html" }}
 
-{% block title %}产品推荐{% endblock %}
-{% block css %}list{% endblock %}
-{% block content %}
+{{ block title }}产品推荐{{ endblock }}
+{{ block css }}list{{ endblock }}
+{{ block content }}
 <div class="blank10"></div>
 <div class="wapper fs16"><a href="/">首页</a> &gt;&gt; 推荐产品</div>
 <div class="blank10"></div>
 <div class="wapper">
-{% if total > 0 -%}
+{{ if total > 0 -}}
 <ul class="cake_list">
-{% for shop in shops -%}
+{{ for shop in shops -}}
 <li>
 <a href="/shop/{{shop.ename}}"><img src="/upload/{{ shop.cover }}" width="280px" height="250px;"></a>
                 <div class="cakedesc">
@@ -17,14 +17,14 @@
                     <a href="/shop/{{shop.ename}}" class="bigfs fs14">{{ shop.name }}</a>
                 </div>
             </li>
-{%- endfor %}
+{{- endfor }}
 </ul>
 {{ module.Paginate(total, pagesize, page) }}
 
-{%-else-%}
+{{-else-}}
 
 暂无商品
 
-{%- endif %}
+{{- endif }}
 </div>
-{% endblock %}
+{{ endblock }}

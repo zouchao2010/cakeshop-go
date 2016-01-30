@@ -1,17 +1,17 @@
-{% extends "layout/admin.html" %}
-{% block title %}修改商品{{shop.name}}{% endblock %}
-{% block content %}
+{{ extends "layout/admin.html" }}
+{{ block title }}修改商品{{shop.name}}{{ endblock }}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/shops">返回商品管理</a></div>
 <hr>
 <h1>修改{{shop.name}}</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="alert alert-success">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             {{msg}}
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 <form action="" method="post">
     {{xsrf()}}
     <input type="hidden" name="cover" id="cover" value="{{shop.cover}}">
@@ -29,35 +29,35 @@
     <label>配图：</label><a href="" id="fileupload">选择图片</a>
     </div>
     <div id="prev">
-        {% for pic in pics -%}
-        <p><img src="/upload/{{pic}}" width=75><br><a href="" class="del">删除</a> <a href="" class="cover{% if pic == shop.cover %} on{%-endif%}" data="/upload/{{pic}}">{% if pic == shop.cover -%}取消{%-else-%}设为{%-endif%}封面</a></p>
-        {%- endfor %}
+        {{ for pic in pics -}}
+        <p><img src="/upload/{{pic}}" width=75><br><a href="" class="del">删除</a> <a href="" class="cover{{ if pic == shop.cover }} on{{-endif}}" data="/upload/{{pic}}">{{ if pic == shop.cover -}}取消{{-else-}}设为{{-endif}}封面</a></p>
+        {{- endfor }}
     </div>
-    {% if category.id == 2 -%}
+    {{ if category.id == 2 -}}
     <div class="form-group">
         <label>价  格</label>
         <input type="text" class="input"  name="price" maxlength="10" size="10" value="{{shop.price}}">
     </div>
     <p>简介：<textarea name="resume" cols=40 rows=3>{{shop.resume}}</textarea>最多255个字</p>
-    {%-else-%}
+    {{-else-}}
     <input type="hidden" name="price" value="{{shop.price}}">
     <hr>
-{% if categoryattrs.count() > 0 -%}
-{% for categoryattr in categoryattrs -%}
+{{ if categoryattrs.count() > 0 -}}
+{{ for categoryattr in categoryattrs -}}
 <div class="form-group">
 <label>
 {{ categoryattr.name }}：</label><input type="text" name="attr_{{categoryattr.id}}" maxlengt=80 size=20 value="{{ shop.args['attr_' ~ categoryattr.id] }}">
 </div>
-{%- endfor %}
+{{- endfor }}
 <hr>
-{%- endif %}
+{{- endif }}
     <div class="form-group">
 <label>级别：</label><select name="level">
-        <option value=1{% if shop.level == 1 %} selected{%-endif%}>1</option>
-        <option value=2{% if shop.level == 2 %} selected{%-endif%}>2</option>
-        <option value=3{% if shop.level == 3 %} selected{%-endif%}>3</option>
-        <option value=4{% if shop.level == 4 %} selected{%-endif%}>4</option>
-        <option value=5{% if shop.level == 5 %} selected{%-endif%}>5</option>
+        <option value=1{{ if shop.level == 1 }} selected{{-endif}}>1</option>
+        <option value=2{{ if shop.level == 2 }} selected{{-endif}}>2</option>
+        <option value=3{{ if shop.level == 3 }} selected{{-endif}}>3</option>
+        <option value=4{{ if shop.level == 4 }} selected{{-endif}}>4</option>
+        <option value=5{{ if shop.level == 5 }} selected{{-endif}}>5</option>
     </select></div>
     <div class="form-group">
 <label>简介：</label><textarea name="resume" cols=40 rows=3>{{shop.resume}}</textarea>最多255个字</div>
@@ -65,7 +65,7 @@
 <label>详细介绍：</label><textarea name="intro" id="intro" cols=60 rows=10>{{shop.intro}}</textarea></div>
     <div class="form-group">
 <label>友情提示：</label><textarea name="prompt" id="prompt" cols=60 rows=8>{{shop.prompt}}</textarea></div>
-    {%-endif%}
+    {{-endif}}
     <div class="form-group">
             <label>点击量</label>
             <input type="text" class="input"  name="views" maxlength="10" size="10" value="{{shop.views}}">
@@ -73,8 +73,8 @@
     <div class="form-group">
 	<input type="submit" name="sub" value="提交"></div>
 </form>
-{% endblock %}
-{% block foot %}
+{{ endblock }}
+{{ block foot }}
 <script src="/style/xheditor/xheditor-1.2.1.min.js"></script>
 <script src="/style/xheditor/xheditor_lang/zh-cn.js"></script>
 <script src="/style/js/jquery.ocupload.js?v=1"></script>
@@ -139,4 +139,4 @@
             });
     resetpics();
 </script>
-{% endblock %}
+{{ endblock }}

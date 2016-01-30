@@ -1,22 +1,22 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}分类管理{% endblock %}
+{{ block title }}分类管理{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/addarea"  >添加地区</a></div>
 <hr>
 <h1>地区管理</h1>
-{%set messages=handler.get_flashed_messages() %}
-{%if messages%}
+{{set messages=handler.get_flashed_messages() }}
+{{if messages}}
     <div class="msg">
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
             <span>{{msg}}</span>
-        {% endfor %}
+        {{ endfor }}
     </div>
-{%endif%}
+{{endif}}
 
 
-{% if areas -%}
+{{ if areas -}}
   <table class="table">
           <thead>
             <tr>
@@ -26,20 +26,20 @@
             </tr>
           </thead>
           <tbody>
-          {% for area in areas -%}
+          {{ for area in areas -}}
             <tr>
               <td>{{area.id}}</td>
-              <td>{%if area.pid > 0%}&nbsp;&nbsp;{%endif%}{{area.name}}</td>
+              <td>{{if area.pid > 0}}&nbsp;&nbsp;{{endif}}{{area.name}}</td>
               <td><a href="/admin/editarea/{{area.id}} ">修改</a> / <a href="/admin/delarea/{{area.id}} ">删除</a></td>
             </tr>
-		{%- endfor %}
+		{{- endfor }}
           </tbody>
         </table>
-{%- else -%}
+{{- else -}}
 
 <p>暂无地区</p>
 
-{%- endif %}
+{{- endif }}
 
 
-{% endblock %}
+{{ endblock }}

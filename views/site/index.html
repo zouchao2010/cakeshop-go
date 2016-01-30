@@ -1,17 +1,16 @@
-{% extends "layout/site.html" %}
-
-{% block title %}首页{% endblock %}
-{% block css %}index{% endblock %}
-{% block js %}index{% endblock %}
-{% block content %}
+{{define "title"}}首页{{end}}
+{{define "css"}}index{{end}}
+{{define "js"}}index{{end}}
+{{template "layout/site.html" .}}
+{{define "content" }}
 <div class="blank2"></div>
     <div class="player zindex0 pr" id="player">
         <a id="play_l" class="play_b"></a>
         <div class="wapper player">
             <ul id="playerbox">
-                {% for ad in ads -%}
-                <li><a href="{{ad.url}}"><img src="/upload/ad/{{ad.id}}.jpg" alt="{{ad.id}}" width="960" height="315"/></a></li>
-                {%-endfor%}
+                {{ range $ad :=.ads}}
+                <li><a href="{{$ad.url}}"><img src="/upload/ad/{{$ad.id}}.jpg" alt="{{$ad.id}}" width="960" height="315"/></a></li>
+                {{end}}
             </ul>
         </div>
         <a id="play_r" class="play_b"></a>
@@ -20,33 +19,33 @@
     <div class="titico tit_new wapper"><a class="more" href="/list/">更多</a></div>
     <div class="wapper">
         <ul class="cake_list">
-           {% for shop in newest -%}
+            {{ range $shop :=.newest}}
             <li>
-                <a href="/shop/{{shop.ename}}" ><img src="/upload/{{ shop.cover }}" width="308" height="278"/></a>
+                <a href="/shop/{{$shop.ename}}" ><img src="/upload/{{$shop.cover }}" width="308" height="278"/></a>
                 <div class="cakedesc">
-                    <p class="bigfs fs22 mt20"><font class="oc">￥{{ shop.price }}元</font></p>
-                    <a href="/shop/{{shop.ename}}" class="bigfs fs14">{{ shop.ename }} {{ shop.name }}</a>
+                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.price }}元</font></p>
+                    <a href="/shop/{{$shop.ename}}" class="bigfs fs14">{{$shop.ename }} {{$shop.name }}</a>
                 </div>
             </li>
-            {%-endfor%}
+            {{end}}
         </ul>
     </div>
     <div class="blank10"></div>
     <div class="titico tit_tuijian wapper"><a class="more" href="/recomm/">更多</a></div>
     <div class="wapper">
         <ul class="cake_list">
-	   {% for shop in recomm -%}
+        {{ range $shop :=.recomm}}
             <li>
-                <a href="/shop/{{shop.ename}}" ><img src="/upload/{{ shop.cover }}" width="308" height="278"/></a>
+                <a href="/shop/{{$shop.ename}}" ><img src="/upload/{{$shop.cover }}" width="308" height="278"/></a>
                 <div class="cakedesc">
-                    <p class="bigfs fs22 mt20"><font class="oc">￥{{ shop.price }}元</font></p>
-                    <a href="/shop/{{shop.ename}}" class="bigfs fs14">{{ shop.ename }} {{ shop.name }}</a>
+                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.price }}元</font></p>
+                    <a href="/shop/{{$shop.ename}}" class="bigfs fs14">{{$shop.ename }} {{$shop.name }}</a>
                 </div>
             </li>
-            {%-endfor%}
+            {{end}}
         </ul>
     </div>
     <div class="blank10"></div>
 
 
-{% endblock %}
+{{end}}}

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}管理首页{% endblock %}</title>
+    <title>{{ block title }}管理首页{{ endblock }}</title>
     <link type="text/css" rel="stylesheet" href="/style/css/global.css" />
     <link type="text/css" rel="stylesheet" href="/style/css/admin.css" />
     <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-1.7.2.min.js"></script>
@@ -29,9 +29,9 @@
         <li><a href="/signout">退出</a></li>
     </ul>
     <div class="right"> 
-    	{% block content %}&nbps;{% endblock %}
+    	{{ block content }}&nbps;{{ endblock }}
     </div>
 </div>
-{% block foot %}{% endblock %}
+{{ block foot }}{{ endblock }}
 </body>
 </html>

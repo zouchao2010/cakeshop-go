@@ -1,9 +1,9 @@
-{% extends "layout/site.html" %}
-{% block css %}free{% endblock %}
-{% block js %}shop{% endblock %}
-{% block title %}集团购买/会员特惠{% endblock %}
+{{ extends "layout/site.html" }}
+{{ block css }}free{{ endblock }}
+{{ block js }}shop{{ endblock }}
+{{ block title }}集团购买/会员特惠{{ endblock }}
 
-{% block content %}
+{{ block content }}
 
 <div class="blank2"></div>
 <div class="wapper"><img src="/style/css/nav_free.jpg"/></div>
@@ -17,13 +17,13 @@
 	{{xsrf()}}
     <div class="free_form fl">
     	<div class="items">
-        	{%set messages=handler.get_flashed_messages() %}
-				{%if messages%}
+        	{{set messages=handler.get_flashed_messages() }}
+				{{if messages}}
 				<span>&nbsp;</span>
-        		{% for type, msg in messages%}
+        		{{ for type, msg in messages}}
             		<div class="rc">{{msg}}!</div>
-        		{% endfor %}
-			{%endif%}
+        		{{ endfor }}
+			{{endif}}
         </div>
         <div class="items">
             <span>您的公司全称：</span>
@@ -74,4 +74,4 @@
 	
 </div>
 
-{% endblock %}
+{{ endblock }}

@@ -1,24 +1,24 @@
-{% extends "layout/site.html" %}
+{{ extends "layout/site.html" }}
 
-{% block title %}{{shop.name}}{% endblock %}
-{% block css %}detail{% endblock %}
-{% block js %}shop{% endblock %}
-{% block content %}
+{{ block title }}{{shop.name}}{{ endblock }}
+{{ block css }}detail{{ endblock }}
+{{ block js }}shop{{ endblock }}
+{{ block content }}
 <div class="blank10"></div>
 <div class="wapper fs16">当前：<a href="/">首页</a> &gt;&gt; <a href="/list/">蛋糕名录</a> &gt;&gt; {{category.name}}</div>
 <div class="blank10"></div>
 <div class="wapper">
     <div id="cakeimages">
-    	{% for pic in pics -%}
-        	{% if loop.index == 1 %}
+    	{{ for pic in pics -}}
+        	{{ if loop.index == 1 }}
             	<img src="/upload/{{pic.path}}" id="bigimg" width="530px" height="440px">
-            {% endif %}
-		{%- endfor %}
+            {{ endif }}
+		{{- endfor }}
         
         <div id="imgplayer">
-        {% for pic in pics -%}
-			<a {% if loop.index == 1 %}class="on"{% endif %}><img src="/upload/{{pic.path}}"></a>
-		{%- endfor %}
+        {{ for pic in pics -}}
+			<a {{ if loop.index == 1 }}class="on"{{ endif }}><img src="/upload/{{pic.path}}"></a>
+		{{- endfor }}
         </div>
     </div>
     <div class="cakeinfo">
@@ -28,9 +28,9 @@
         <div class="borbom item clearfix bgffffbf">
             <span>尺寸</span>
             <div id="size_sel">
-            {% for shopattr in shopattrs -%}
+            {{ for shopattr in shopattrs -}}
 				<a  data="{{shopattr.price}}" data-id="{{shopattr.id}}">{{shopattr.name}}</a>
-			{%- endfor %}
+			{{- endfor }}
             </div>
             <span>数量</span>
             <div id="num_sel">
@@ -46,9 +46,9 @@
             <span>甜度</span>
             <div class="sweet_sel">
                 <em>
-                	{%-for i in range(shop.level)-%}
+                	{{-for i in range(shop.level)-}}
                 		<i style="width:12px; margin-right:2px" class="fl"></i>
-                    {%-endfor%}
+                    {{-endfor}}
                 </em>
             </div>
         </div>
@@ -77,11 +77,11 @@
         </div>
         <div class="parameter m25">
             <div class="content">
-            	{% if categoryattrs.count() > 0 -%}
-					{% for categoryattr in categoryattrs -%}
+            	{{ if categoryattrs.count() > 0 -}}
+					{{ for categoryattr in categoryattrs -}}
 						{{ categoryattr.name }}：{{ shop.args['attr_' ~ categoryattr.id] }}<br/>
-					{%- endfor %}
-				{%- endif %}
+					{{- endfor }}
+				{{- endif }}
             </div>
             {{shop.intro}} 
         </div>
@@ -122,11 +122,11 @@
     <div class="rightwapper">
         <div class="fs22 bigfs pl20 tanc borbom99 gc6 pt10">应季推荐</div>
         <ul class="recommend_list">
-            {% for shop in recomshops-%}
+            {{ for shop in recomshops-}}
             <li class="tac">
                 <a class="tac fs14" href="/shop/{{shop.ename}}"><img src="/upload/{{ shop.cover }}" width="250"/><br/>{{shop.name}}</a>
             </li>
-            {%-endfor%}
+            {{-endfor}}
         </ul>
     </div>
 </div>
@@ -232,9 +232,9 @@ Do.ready(function(){
 })
 </script>
 
-{% endblock %}
+{{ endblock }}
 
-{% block foot %}
-{% endblock %}
+{{ block foot }}
+{{ endblock }}
 
 

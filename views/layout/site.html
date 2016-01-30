@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=7">
     <meta property="wb:webmaster" content="988c9b63cde60b6c" />
 
-    <title>{% block title %}首页{% endblock %}</title>
-	<link type="text/css" rel="stylesheet" href="/style/css/global.css" />
-    <link type="text/css" rel="stylesheet" href="/style/css/common.css" />
-    <link type="text/css" rel="stylesheet" href="/style/css/{% block css %}{% endblock %}.css" />
-    <script src="/style/js/do.js"></script>
-    <script src="/style/js/common.js"></script>
-    <script src="/style/js/{% block js %}{% endblock %}.js"></script>
+    <title>{{template "title" .}}</title>
+	<link type="text/css" rel="stylesheet" href="/static/css/global.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/do.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/{{template "js" .}}.js"></script>
 </head>
 
 <body>
@@ -21,8 +21,13 @@
     <div class="headtel">免费配送 0519-81297639 </div>
     <div class="fr headinfo">
         <div id="userinfo" class="fr">
-        {% if user -%}<a>你好{{user.mobile}}</a><span class="fl">&nbsp;</span><a href="/signout">退出</a><a href="/order"  class="ico shopping">我的购物车</a><span class="fl">&nbsp;|&nbsp;</span><a href="/user">我的订单</a> {%if user.group == 9 -%}<span class="fl">&nbsp;|&nbsp;</span><a href="/admin">网站管理</a> {%endif %}
-        {%-else-%}<a href="/signin" class="formforlogin">登录</a><span class="fl">&nbsp;|&nbsp;</span><a href="/signup"  class="formforregister">注册</a> <a href="/order"  class="ico shopping">我的购物车</a>{%-endif%}</div>
+            {{if .user}}
+                <a>你好{{.user.mobile}}</a><span class="fl">&nbsp;</span><a href="/signout">退出</a><a href="/order"  class="ico shopping">我的购物车</a><span class="fl">&nbsp;|&nbsp;</span><a href="/user">我的订单</a>
+                {{if eq .user.group 9}}<span class="fl">&nbsp;|&nbsp;</span><a href="/admin">网站管理</a> {{end}}}
+            {{else}}
+                <a href="/signin" class="formforlogin">登录</a><span class="fl">&nbsp;|&nbsp;</span><a href="/signup"  class="formforregister">注册</a> <a href="/order"  class="ico shopping">我的购物车</a>
+            {{end }}
+        </div>
         <div id="global_search" class="fr"><form action="/list/" method="get"><input type="text" class="txt fl" name="keyword" ><input type="submit" value="搜索" class="but fr"></form></div>
     </div>
 </div>
@@ -80,7 +85,7 @@
     </ul>
 </div>
 
-    {% block content %}&nbps;{% endblock %}
+    {{ template "content". }}
 
 <div class="blank10"></div>
 <div class="wapper foot">
@@ -102,7 +107,7 @@
         <p>Copyright  2012吉米的厨房 All RightRevesed. </p>
     </div>
 </div>
-{% if user  is none  -%}
+{{ if not .user }}
 <div class="global_popwinwapper r5" id="formforlogin" style="display: none;">
     <div class="global_popwin clearfix">
         <div class="blank20"></div>
@@ -110,7 +115,6 @@
         <div class="blank20"></div>
         <div class="pop_form">
             <form action="/signin" method="post">
-            {{xsrf()}}
             <div class="login_form">
                 <div class="item">
                     <span>帐号：</span><input type="text" name="mobile" class="fl">
@@ -124,7 +128,7 @@
                 <div class="itembut">
                     <span>&nbsp;</span><input type="submit" class="titico bsbut" value="登陆">
                 </div>
-              </form>
+            </form>
                 <div class="blank10"></div>
                 <div class="itemword">
                     <p class="fs14">使用合作网站帐号登陆</p>
@@ -139,7 +143,7 @@
         </div>
     </div>
 </div>
-{%endif %}
+{{end }}
 <div class="global_popwinwapper r5" id="formforregister" style="display: none;">
     <div class="global_popwin clearfix">
     	<div class="blank20"></div>
@@ -147,7 +151,6 @@
     	<div class="blank20"></div>
     	<div class="pop_form">
         <form action="/signup" method="post">
-        	{{xsrf()}}
     		<div class="login_form">
     			<div class="item">
     				<span>手机号码：</span>

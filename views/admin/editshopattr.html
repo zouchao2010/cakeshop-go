@@ -1,26 +1,26 @@
-{% extends "layout/admin.html" %}
+{{ extends "layout/admin.html" }}
 
-{% block title %}修改{{shop.name}}的规格和价格{% endblock %}
+{{ block title }}修改{{shop.name}}的规格和价格{{ endblock }}
 
-{% block content %}
+{{ block content }}
 <div class="mb10 fl"><a class="but" href="/admin/shopattrs/{{shop.id}}">返回{{shop.name}}规格和价格列表</a></div>
 <hr>
 <h1>修改{{shop.name}}的规格和价格</h1>
-{%set messages=handler.get_flashed_messages() %}
+{{set messages=handler.get_flashed_messages() }}
 
-{%if messages%}
+{{if messages}}
 
     <div class="alert alert-success">
 
-        {% for type, msg in messages%}
+        {{ for type, msg in messages}}
 
             {{msg}}
 
-        {% endfor %}
+        {{ endfor }}
 
     </div>
 
-{%endif%}
+{{endif}}
 <form action="" method="post">
 
     {{xsrf()}}
@@ -41,4 +41,4 @@
 	</div>
 </form>
 
-{% endblock %}
+{{ endblock }}
