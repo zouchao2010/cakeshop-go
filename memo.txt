@@ -1,0 +1,2 @@
+bee api cakeapi -conn=root:root@tcp\(192.168.147.151:3306\)/database
+bee run -gendoc=true -downdoc=true

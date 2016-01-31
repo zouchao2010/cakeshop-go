@@ -9,7 +9,7 @@
         <div class="wapper player">
             <ul id="playerbox">
                 {{ range $ad :=.ads}}
-                <li><a href="{{$ad.url}}"><img src="/upload/ad/{{$ad.id}}.jpg" alt="{{$ad.id}}" width="960" height="315"/></a></li>
+                <li><a href="{{$ad.Url}}"><img src="/upload/ad/{{$ad.Id}}.jpg" alt="{{$ad.Id}}" width="960" height="315"/></a></li>
                 {{end}}
             </ul>
         </div>
@@ -21,10 +21,10 @@
         <ul class="cake_list">
             {{ range $shop :=.newest}}
             <li>
-                <a href="/shop/{{$shop.ename}}" ><img src="/upload/{{$shop.cover }}" width="308" height="278"/></a>
+                <a href="/shop/{{$shop.Ename}}" ><img src="/upload/{{$shop.Cover }}" width="308" height="278"/></a>
                 <div class="cakedesc">
-                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.price }}元</font></p>
-                    <a href="/shop/{{$shop.ename}}" class="bigfs fs14">{{$shop.ename }} {{$shop.name }}</a>
+                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.Price }}元</font></p>
+                    <a href="/shop/{{$shop.Ename}}" class="bigfs fs14">{{$shop.Ename }} {{$shop.Name }}</a>
                 </div>
             </li>
             {{end}}
@@ -36,10 +36,10 @@
         <ul class="cake_list">
         {{ range $shop :=.recomm}}
             <li>
-                <a href="/shop/{{$shop.ename}}" ><img src="/upload/{{$shop.cover }}" width="308" height="278"/></a>
+                <a href="/shop/{{$shop.Ename}}" ><img src="/upload/{{$shop.Cover }}" width="308" height="278"/></a>
                 <div class="cakedesc">
-                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.price }}元</font></p>
-                    <a href="/shop/{{$shop.ename}}" class="bigfs fs14">{{$shop.ename }} {{$shop.name }}</a>
+                    <p class="bigfs fs22 mt20"><font class="oc">￥{{$shop.Price }}元</font></p>
+                    <a href="/shop/{{$shop.Ename}}" class="bigfs fs14">{{$shop.Ename }} {{$shop.Name }}</a>
                 </div>
             </li>
             {{end}}

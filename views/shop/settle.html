@@ -112,7 +112,7 @@
 </select>
 	<div id="cdistribution">
         <div id="distributionmore"></div>
-        <div>自提时间：<input type="text" name="day" size="12" value="{{tmday}}" id="inputDate"> 
+        <div>自提时间：<input type="text" name="day" size="12" value="{{tmday}}" id="inputDate">
             <select name="hour">
                 <option value="9">9时</option>
                 <option value="10" selected>10时</option>
@@ -186,15 +186,15 @@
 {{ endif }}
 <script>
 Do.add('DatePickerCss' ,{
-	path : '/style/css/datepicker.css',
+	path : '/static/css/datepicker.css',
 	type : 'css'
 })
 Do.add('date',{
-	path : '/style/js/date.js',
+	path : '/static/js/date.js',
 	type : 'js'
 })
 Do.add('DatePicker',{
-	path : '/style/js/jquery.datePicker.js',
+	path : '/static/js/jquery.datePicker.js',
 	type : 'js',
 	requires: ['DatePickerCss']
 })
